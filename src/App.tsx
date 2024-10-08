@@ -164,7 +164,7 @@ function App() {
   )
 }
 
-function Table({ data, max, filterType, setFilterType }: { data: Api_resposne, max: number, filterType: string, setFilterType: (filter: string) => void }) {
+function Table({ data, max, setFilterType }: { data: Api_resposne, max: number, filterType: string, setFilterType: (filter: string) => void }) {
 
   const CustomFilter = () => {
     return (
@@ -299,7 +299,7 @@ function Table({ data, max, filterType, setFilterType }: { data: Api_resposne, m
         header: '% Return / % Max Risk',
         size: 150,
         Header: ({ column }) => <div className='text-white '>{column.columnDef.header}</div>,
-        Cell: ({ cell, column }) => {
+        Cell: ({ cell}) => {
 
           const value = cell.getValue<number>();
           let width = '0%';

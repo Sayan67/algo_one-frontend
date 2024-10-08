@@ -43,7 +43,7 @@ function App() {
   const [customFiltered, setCustomFiltered] = useState<Api_resposne>([]);
   const threshold = 214.29;
 
-  const customFilteredData = (allData: Api_resposne) => allData.filter((row) => {
+  const customFilteredData = (allData: Api_resposne) => [...allData].filter((row) => {
     if (filterType === 'In') {
       return row.percent_in_out_money >= 0;
     } else if (filterType === 'Out') {
@@ -56,6 +56,8 @@ function App() {
   const filterData = (data: Api_resposne, sliderValue: number) => {
 
     if (sliderValue === 0) { return [] }
+    else if(sliderValue===1) {
+      return [data[0]]}
     else {
       const sortedData = [...data].sort((a, b) => a.strike - b.strike);
 

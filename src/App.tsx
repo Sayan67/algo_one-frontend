@@ -70,7 +70,7 @@ function App() {
 
       if (lessThanOrEqualToThreshold.length >= halfRowsToShow) {
         smallerRows = lessThanOrEqualToThreshold.slice(-halfRowsToShow);
-        greaterRows = sliderValue % 2 === 0 ? greaterThanThreshold.slice(0,halfRowsToShow) : greaterThanThreshold.slice(0,halfRowsToShow +1);
+        greaterRows = sliderValue % 2 === 0 ? greaterThanThreshold.slice(0, halfRowsToShow) : greaterThanThreshold.slice(0, halfRowsToShow + 1);
       } else {
         greaterRows = greaterThanThreshold.slice(0, slider - lessThanOrEqualToThreshold.length);
         smallerRows = lessThanOrEqualToThreshold;
@@ -135,6 +135,8 @@ function App() {
           <div className='flex gap-4'>
             <h1>0</h1>
             <Slider
+              onTouchStart={handleMouseEnter}
+              onTouchEnd={handleMouseLeave}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onValueChange={(e) => handleChange(e[0])}
@@ -299,7 +301,7 @@ function Table({ data, max, setFilterType }: { data: Api_resposne, max: number, 
         header: '% Return / % Max Risk',
         size: 150,
         Header: ({ column }) => <div className='text-white '>{column.columnDef.header}</div>,
-        Cell: ({ cell}) => {
+        Cell: ({ cell }) => {
 
           const value = cell.getValue<number>();
           let width = '0%';
@@ -360,11 +362,11 @@ function Table({ data, max, setFilterType }: { data: Api_resposne, max: number, 
         backgroundColor: '#0F172A',
       }
     },
-    defaultColumn:{
+    defaultColumn: {
       size: 50,
-      muiFilterTextFieldProps:{
-        style:{
-          borderBottom:'1px solid #ffffff'
+      muiFilterTextFieldProps: {
+        style: {
+          borderBottom: '1px solid #ffffff'
         }
       }
     },
@@ -383,7 +385,7 @@ function Table({ data, max, setFilterType }: { data: Api_resposne, max: number, 
         '& *': {
           color: 'white',
         },
-        height:'100%',
+        height: '100%',
         paddingTop: '20px',
         paddingX: '10px',
       },
